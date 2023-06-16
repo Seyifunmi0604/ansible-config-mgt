@@ -11,8 +11,13 @@
 - name: Webserver assignment
   import_playbook: ../static-assignments/webservers.yml
 
-- hosts: all
-- import_playbook: ../static-assignments/common-del.yml
+  - name: Loadbalancers assignment
+       hosts: lb
+         - import_playbook: ../static-assignments/loadbalancers.yml
+        when: load_balancer_is_required 
 
-- hosts: uat-webservers
-- import_playbook: ../static-assignments/uat-webservers.yml
+# - hosts: all
+# - import_playbook: ../static-assignments/common-del.yml
+
+# - hosts: uat-webservers
+# - import_playbook: ../static-assignments/uat-webservers.yml
